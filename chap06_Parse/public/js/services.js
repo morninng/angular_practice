@@ -1,7 +1,7 @@
 'use strict';
 
 /* Services */
-
+/*
 var blogServices = angular.module('blogServices', ['ngResource']);
 
 blogServices.factory('BlogPost', ['$resource',
@@ -24,4 +24,6 @@ blogServices.factory('BlogList', ['$resource',
         });
     }]
 );
+
+*/
 

@@ -1,0 +1,12 @@
+
+<div id="container" class="container"> 
+  <div class="blog-post-label">Event List</div>
+    <ul ng-repeat="event in eventList">
+      <li style="border-bottom:1px solid #84b2e0">
+        <p>date: {{event.date}}</p>
+        <a href = "{{event.id}}">{{event.title}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
