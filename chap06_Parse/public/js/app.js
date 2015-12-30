@@ -20,12 +20,11 @@ mixideaApp.config(['$routeProvider', '$locationProvider',
                 when('/', {
                     templateUrl: 'partials/eventList.html',
                     controller: 'EventListCtrl'
+                })
+                .when('/event/:id', {
+                    templateUrl: 'partials/eventContext.html',
+                    controller: 'EventContextCtrl'
                 });
-
-                /*.when('/blogPost/:id', {
-                    templateUrl: 'partials/blogPost.html',
-                    controller: 'BlogViewCtrl'
-                })*/
         $locationProvider.html5Mode(false).hashPrefix('!');
     }
 ]);

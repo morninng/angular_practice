@@ -31,11 +31,34 @@ eventControllers.controller('EventListCtrl', ['$scope',
           }
         });
     }]);
+
+eventControllers.controller('EventContextCtrl', ['$scope', '$routeParams',
+    function EventContextCtrl($scope, $routeParams) {
+        var eventId = $routeParams.id;
+        console.log(eventId);
+
+        $scope.eventContext = new Object();
+
+        var Event = Parse.Object.extend("Event");
+        var event_query = new Parse.Query(Event);
+        event_query.include("game");
+        event_query.get(eventId,  {
+          success: function(event_obj) {
+            console.log(event_obj);
+            $scope.eventContext.id=event_obj.id;
+            $scope.eventContext.date_time = event_obj.get("date_time");
+            $scope.eventContext.title = event_obj.get("title");
+            $scope.eventContext.description = event_obj.get("description");
+            $scope.$apply()
+          },
+          error: function(object, error) {
+
+          }
+        });
+
+
+
 /*
-eventControllers.controller('BlogViewCtrl', ['$scope', '$routeParams', 'BlogPost',
-    function BlogViewCtrl($scope, $routeParams, BlogPost) {
-        var blogId = $routeParams.id;
-        $scope.blg = 1;
         BlogPost.get({id: blogId},
                 function success(response) {
                     //alert($scope.challenge.question);
@@ -47,7 +70,8 @@ eventControllers.controller('BlogViewCtrl', ['$scope', '$routeParams', 'BlogPost
                     console.log("Error:" + JSON.stringify(errorResponse));
                 }
         );
+*/
 
     }]);
 
-*/
+
